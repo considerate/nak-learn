@@ -24,7 +24,7 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
 
 RUN pip3 --no-cache-dir install \
     Pillow numpy scikit-learn sklearn scikit-image pandas matplotlib Cython requests \
-    jupyter tensorflow-gpu h5py pydot_ng keras torch torchvision
+    jupyter tensorflow-gpu h5py pydot_ng keras torch torchvision pytest sphinx
 
 # Add Jupyter configuration
 
