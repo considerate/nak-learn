@@ -4,5 +4,5 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     libsndfile1\
     && pip install --no-cache-dir \
-    music21 librosa soundfile pretty_midi \
+    music21 librosa soundfile pretty_midi mido pychord \
     && rm -rf /var/lib/apt/lists/*
