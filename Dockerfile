@@ -28,7 +28,7 @@ RUN apt-get update \
     && git clone https://github.com/torch/distro.git /torch7 \
     && cd /torch7 \
     && bash install-deps \
-    && ./install.sh
+    && env TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__" ./install.sh
 
 # Python packages
 
