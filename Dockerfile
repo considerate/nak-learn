@@ -20,6 +20,16 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && echo "alias pip='pip3'" >> /root/.bash_aliases \
     && rm -rf /var/lib/apt/lists/*
 
+# Lua and Torch7
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends\
+    libhdf5-serial-dev liblmdb-dev sudo \
+    && git clone https://github.com/torch/distro.git /torch7 \
+    && cd /torch7 \
+    && bash install-deps \
+    && ./install.sh
+
 # Python packages
 
 RUN pip3 --no-cache-dir install \
