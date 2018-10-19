@@ -22,13 +22,13 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
 
 # Lua and Torch7
 
-RUN apt-get update \
-    && apt-get install -y --no-install-recommends\
-    libhdf5-serial-dev liblmdb-dev sudo \
-    && git clone https://github.com/torch/distro.git /torch7 \
-    && cd /torch7 \
-    && bash install-deps \
-    && env TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__" ./install.sh
+# RUN apt-get update \
+#     && apt-get install -y --no-install-recommends\
+#     libhdf5-serial-dev liblmdb-dev sudo \
+#     && git clone https://github.com/torch/distro.git /torch7 \
+#     && cd /torch7 \
+#     && bash install-deps \
+#     && env TORCH_NVCC_FLAGS="-D__CUDA_NO_HALF_OPERATORS__" ./install.sh
 
 # Python packages
 
