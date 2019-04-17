@@ -20,11 +20,19 @@ RUN add-apt-repository ppa:deadsnakes/ppa \
     && echo "alias pip='pip3'" >> /root/.bash_aliases \
     && rm -rf /var/lib/apt/lists/*
 
+#
+# Graphviz
+#
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+    graphviz \
+    && rm -rf /var/lib/apt/lists/*
+
 # Python packages
 
 RUN pip3 --no-cache-dir install \
     Pillow numpy scikit-learn sklearn scikit-image pandas matplotlib Cython requests \
-    jupyter tensorflow-gpu h5py pydot_ng keras torch torchvision pytest sphinx
+    jupyter tensorflow-gpu h5py pydot_ng keras torch torchvision pytest sphinx tables
 
 # Add Jupyter configuration
 
