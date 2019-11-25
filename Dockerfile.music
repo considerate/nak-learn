@@ -13,7 +13,7 @@ RUN apt-get update \
 
 # Music processing libraries
 RUN pip3 --no-cache-dir install \
-    pypianoroll music21 pretty_midi mido pychord librosa essentia soundfile
+    pypianoroll music21 pretty_midi mido pychord librosa essentia soundfile partitura
 
 # Config files
 COPY .music21rc /root/.music21rc
