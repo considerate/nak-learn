@@ -1,18 +1,18 @@
 FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 
-# Setting locales, necessary for libraries such as streamlit
-RUN locale-gen en_US.UTF-8  
-ENV LANG en_US.UTF-8  
-ENV LANGUAGE en_US:en  
-ENV LC_ALL en_US.UTF-8 
-
 # Install some base packages
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     apt-utils git curl vim unzip openssh-client wget \
     build-essential cmake libblas-dev libjpeg-dev zlib1g-dev \
-    software-properties-common \
+    software-properties-common locales \
     && rm -rf /var/lib/apt/lists/*
+
+# Setting locales, necessary for streamlit
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8 
 
 #
 # Python 3.7
