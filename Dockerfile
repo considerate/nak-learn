@@ -5,8 +5,14 @@ RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     apt-utils git curl vim unzip openssh-client wget \
     build-essential cmake libblas-dev libjpeg-dev zlib1g-dev \
-    software-properties-common \
+    software-properties-common locales \
     && rm -rf /var/lib/apt/lists/*
+
+# Setting locales, necessary for streamlit
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8 
 
 #
 # Python 3.7
@@ -32,7 +38,7 @@ RUN apt-get update \
 
 RUN pip3 --no-cache-dir install \
     Pillow numpy scikit-learn sklearn scikit-image pandas matplotlib Cython requests \
-    jupyter tensorflow-gpu h5py pydot_ng keras torch torchvision pytest sphinx tables
+    jupyter jupyterlab tensorflow-gpu h5py pydot_ng keras torch torchvision pytest sphinx tables streamlit
 
 # Add Jupyter configuration
 

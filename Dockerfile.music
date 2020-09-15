@@ -1,8 +1,19 @@
 FROM considerate/nak-learn:latest
 
+# Install musescore (MIDI to sheet conversion)
+RUN add-apt-repository ppa:mscore-ubuntu/mscore-stable \
+  && apt-get update \
+  && apt-get install -y --no-install-recommends musescore \
+  && rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
     libsndfile1 ffmpeg \
-    && pip install --no-cache-dir \
-    music21 librosa soundfile pretty_midi mido pychord essentia \
     && rm -rf /var/lib/apt/lists/*
+
+# Music processing libraries
+RUN pip3 --no-cache-dir install \
+    pypianoroll music21 pretty_midi mido pychord librosa essentia soundfile partitura
+
+# Config files
+COPY .music21rc /root/.music21rc
